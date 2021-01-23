@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller">
+   <children>
+      <DatePicker id="dateInput" fx:id="dateInput" layoutX="35.0" layoutY="114.0" />
+      <TextArea id="journalEntryInput" fx:id="journalInput" layoutX="241.0" layoutY="46.0" prefHeight="166.0" prefWidth="325.0" />
+      <TextField id="hoursInput" fx:id="hoursInput" layoutX="35.0" layoutY="189.0" text="0.0" />
+      <Label layoutX="35.0" layoutY="97.0" prefHeight="17.0" prefWidth="94.0" text="DATE OF ENTRY" />
+      <Label layoutX="35.0" layoutY="172.0" prefHeight="17.0" prefWidth="127.0" text="HOURS COMPLETED " />
+      <Button id="submitButton" fx:id="submitButton" layoutX="35.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="42.0" prefWidth="161.0" text="SUBMIT" />
+      <TextField fx:id="labNumberInput" layoutX="35.0" layoutY="46.0" />
+      <Label layoutX="35.0" layoutY="25.0" prefHeight="17.0" prefWidth="94.0" text="LAB #" />
+      <Label layoutX="241.0" layoutY="25.0" prefHeight="17.0" prefWidth="149.0" text="JOURNAL ENTRY" />
+      <ListView layoutX="241.0" layoutY="270.0" prefHeight="106.0" prefWidth="325.0" />
+      <Label layoutX="241.0" layoutY="244.0" prefHeight="17.0" prefWidth="60.0" text="FILE LIST" />
+   </children>
+</AnchorPane>
