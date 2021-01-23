@@ -10,11 +10,12 @@
       <TextField id="hoursInput" fx:id="hoursInput" layoutX="35.0" layoutY="189.0" text="0.0" />
       <Label layoutX="35.0" layoutY="97.0" prefHeight="17.0" prefWidth="94.0" text="DATE OF ENTRY" />
       <Label layoutX="35.0" layoutY="172.0" prefHeight="17.0" prefWidth="127.0" text="HOURS COMPLETED " />
-      <Button id="submitButton" fx:id="submitButton" layoutX="35.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="42.0" prefWidth="161.0" text="SUBMIT" />
+      <Button id="submitButton" fx:id="submitButton" layoutX="35.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="42.0" prefWidth="161.0" text="SUBMIT" />
       <TextField fx:id="labNumberInput" layoutX="35.0" layoutY="46.0" />
       <Label layoutX="35.0" layoutY="25.0" prefHeight="17.0" prefWidth="94.0" text="LAB #" />
       <Label layoutX="241.0" layoutY="25.0" prefHeight="17.0" prefWidth="149.0" text="JOURNAL ENTRY" />
-      <ListView layoutX="241.0" layoutY="270.0" prefHeight="106.0" prefWidth="325.0" />
+      <ListView fx:id="fileListView" layoutX="241.0" layoutY="270.0" prefHeight="106.0" prefWidth="325.0" />
       <Label layoutX="241.0" layoutY="244.0" prefHeight="17.0" prefWidth="60.0" text="FILE LIST" />
+      <Button fx:id="listButton" layoutX="35.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleListButton" prefHeight="42.0" prefWidth="161.0" text="DISPLAY FILE LIST" />
    </children>
 </AnchorPane>

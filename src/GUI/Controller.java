@@ -2,8 +2,8 @@ package GUI;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -11,6 +11,17 @@ import java.io.*;
 import java.time.LocalDate;
 
 public class Controller {
+
+    private String dirName = "journalEntryData";
+
+    public void initialize() {
+        File directory = new File(dirName);
+        if (!directory.exists()) {
+            directory.mkdir();
+            // If you require it to make the entire directory path including parents,
+            // use directory.mkdirs(); here instead.
+        }
+    }
 
     @FXML
     private DatePicker dateInput = new DatePicker();
@@ -21,7 +32,7 @@ public class Controller {
     @FXML
     private TextField labNumberInput = new TextField();
     @FXML
-    private Button submitButton = new Button();
+    private ListView fileListView = new ListView();
 
     @FXML
     private void handleSubmitButtonAction(ActionEvent event) {
@@ -33,7 +44,7 @@ public class Controller {
             System.out.println(journalEntry);
 
             String labNumber = getLabNumber();
-            String fileName = "CIT496P_lab" + labNumber + ".txt";
+            String fileName = dirName + "/CIT496P_lab" + labNumber + ".txt";
 
             File tempFile = new File(fileName);
             boolean fileExists = tempFile.exists();
@@ -43,13 +54,35 @@ public class Controller {
                 createFile(fileName);
             }
             writeToFile(fileName, journalEntry);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error");
             e.printStackTrace();
         }
     }
 
-    private String getLabNumber(){
+    @FXML
+    private void handleListButton(ActionEvent event) {
+        fileListView.getItems().clear();
+
+        // Creates an array in which we will store the names of files and directories
+        String[] pathnames;
+
+        // Creates a new File instance by converting the given pathname string
+        // into an abstract pathname
+        File f = new File(dirName);
+
+        // Populates the array with names of files and directories
+        pathnames = f.list();
+
+        // For each pathname in the pathnames array
+        for (String pathname : pathnames) {
+            // Print the names of files and directories
+            System.out.println(pathname);
+            fileListView.getItems().add(pathname);
+        }
+    }
+
+    private String getLabNumber() {
         return labNumberInput.getText();
     }
 
@@ -85,10 +118,9 @@ public class Controller {
     }
 
     private void writeToFile(String fileName, String journalEntry) {
-        try(FileWriter fw = new FileWriter(fileName, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw))
-        {
+        try (FileWriter fw = new FileWriter(fileName, true);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bw)) {
             out.println(journalEntry + "\n");
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
