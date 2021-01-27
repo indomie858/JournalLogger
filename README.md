@@ -14,3 +14,4 @@ I made this app for logging journal entries for labs in CIT 496P (CSUN)
 5. Txt files are saved in folder /journalEntryData
 6. Press "DISPLAY FILE LIST" to show saved files
 > Note: Files in list are not clickable yet. Will set that up later
+7. Files are saved in folder named "journalEntryData". Folder is created when program starts, and will be located in the project directory.
