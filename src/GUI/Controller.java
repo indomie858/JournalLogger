@@ -95,7 +95,7 @@ public class Controller {
         LocalDate date = dateInput.getValue();
 
         if (date == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Missing date. Save not successful");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Missing date. Save not successful. Please enter a valid date");
             alert.showAndWait();
         }
 
