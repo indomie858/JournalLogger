@@ -2,10 +2,7 @@ package GUI;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -54,6 +51,14 @@ public class Controller {
                 createFile(fileName);
             }
             writeToFile(fileName, journalEntry);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Journal entry:  " + journalEntry + "\nSaved to " + fileName, ButtonType.OK);
+            alert.setTitle("Save Success");
+            alert.setHeaderText("");
+            alert.showAndWait();
+
+            journalInput.clear();
+            hoursInput.setText("0.0");
         } catch (Exception e) {
             System.out.println("Error");
             e.printStackTrace();
@@ -88,6 +93,12 @@ public class Controller {
 
     private String getDate() {
         LocalDate date = dateInput.getValue();
+
+        if (date == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Missing date. Save not successful");
+            alert.showAndWait();
+        }
+
         int dayOfMonth = date.getDayOfMonth();
         int month = date.getMonthValue();
         int year = date.getYear();
